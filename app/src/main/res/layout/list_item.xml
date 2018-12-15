@@ -55,11 +55,11 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/authorTextView"
+                    android:id="@+id/sourceTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/book_container"
-                    android:text="Bobby Reay"
+                    android:text="The Onion"
                     android:textAppearance="?android:textAppearanceSmall"
                     android:textSize="14sp"
                     android:textStyle="bold" />
