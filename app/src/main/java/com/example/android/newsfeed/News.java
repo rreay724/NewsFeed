@@ -8,31 +8,31 @@ import android.graphics.Bitmap;
 
 public class News {
 
-    private String mId;
+//    private String mId;
     private String mTitle;
     private String mAuthor;
     private Bitmap mNewsImage;
     private String mNewsArticle;
     private String mSource;
 
-    public News (String id, String title, String author, Bitmap newsImage, String newsArticle){
-        mId = id;
+    public News (String title, String author, Bitmap newsImage, String newsArticle){
+//        mId = id;
         mTitle = title;
         mAuthor = author;
         mNewsImage = newsImage;
         mNewsArticle = newsArticle;
     }
 
-    public News (String id, String title, String source){
-        mId = id;
+    public News (String title, String source){
+//        mId = id;
         mTitle = title;
         mSource = source;
 //        mNewsImage = newsImage;
     }
 
-    public String getId() {
-        return mId;
-    }
+//    public String getId() {
+//        return mId;
+//    }
 
     public String getTitle() {
         return mTitle;

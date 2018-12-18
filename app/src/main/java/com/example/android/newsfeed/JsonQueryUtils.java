@@ -57,14 +57,14 @@ public class JsonQueryUtils {
 
             for (int i = 0; i < newsArray.length(); i++) {
                 JSONObject currentNews = newsArray.getJSONObject(i);
-                String id = currentNews.getString("id");
+//                String id = currentNews.getString("id");
                 JSONObject articles = currentNews.getJSONObject("articles");
-                JSONObject source = currentNews.getJSONObject(("source"));
+                JSONObject source = currentNews.getJSONObject("source");
 
                 String title = articles.getString("title");
                 String sourceName = source.getString("name");
 
-                news.add(new News(id, title, sourceName));
+                news.add(new News(title, sourceName));
             }
         } catch (JSONException e) {
             e.printStackTrace();

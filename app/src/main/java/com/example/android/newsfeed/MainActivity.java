@@ -1,5 +1,6 @@
 package com.example.android.newsfeed;
 
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,12 @@ public class MainActivity extends AppCompatActivity {
 
         ViewPager viewPager = findViewById(R.id.viewpager);
 
-        CategoryAdapter adapter = new CategoryAdapter(this, getSupportFragmentManager());
+        CategoryAdapter adapter = new CategoryAdapter(this, getFragmentManager());
+
+        viewPager.setAdapter(adapter);
+
+        TabLayout tabLayout = findViewById(R.id.sliding_tabs);
+
+        tabLayout.setupWithViewPager(viewPager);
     }
 }

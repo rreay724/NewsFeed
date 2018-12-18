@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">News Feed</string>
+    <string name="top_headlines_fragment">Top Headlines</string>
+    <string name="search_headlines_fragment">Search Headlines</string>
     <string name="news_title">American Man Dressed as Jon Snow Heads to Iceland to Fight Imaginary Dragons</string>
     <string name="news_summary">Sixteen immigrants died in U.S. government detention between December 2015 and April 2017, according to a new report by four civil rights organizations. Half of those deaths were preventable and caused in part by inadequate medical care, the report alleges.
         Physicians with expertise in medical issues that occur in correctional facilities examined all but one of the 16 deaths reported by the federal government’s Detainee Death Reviews during that 17-month period. They found evidence of unreasonable delays, poor medical care and botched emergency response, according to the report, which was released just after midnight Wednesday by Human Rights Watch, the American Civil Liberties Union, the National Immigrant Justice Center and Detention Watch Network.
