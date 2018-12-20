@@ -49,16 +49,13 @@ public class TopHeadlinesFragment extends Fragment
 
         listView.setAdapter(mNewsAdapter);
 
-        final LoaderManager loaderManager = getLoaderManager();
+        LoaderManager loaderManager = getLoaderManager();
         loaderManager.initLoader(NEWS_LOADER_ID, null, this);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mNewsAdapterListing = new NewsAdapterListing(getActivity(), new ArrayList<News>());
-                News currentNews = mNewsAdapterListing.getItem(position);
                 Intent newsArticleDisplayIntent = new Intent(getActivity(), FullArticleListing.class);
-
                 startActivity(newsArticleDisplayIntent);
 
             }

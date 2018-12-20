@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 public class News {
 
     private String mTitle;
-    private String mAuthor;
     private Bitmap mNewsImage;
     private String mNewsArticle;
     private String mSource;
@@ -30,10 +29,6 @@ public class News {
 
     public String getTitle() {
         return mTitle;
-    }
-
-    public String getAuthor() {
-        return mAuthor;
     }
 
     public String getSource() {
