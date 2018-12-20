@@ -14,9 +14,9 @@ public class News {
     private String mNewsArticle;
     private String mSource;
 
-    public News (String title, String author, Bitmap newsImage, String newsArticle){
+    public News (String title, String source, Bitmap newsImage, String newsArticle){
         mTitle = title;
-        mAuthor = author;
+        mSource = source;
         mNewsImage = newsImage;
         mNewsArticle = newsArticle;
     }

@@ -31,8 +31,8 @@ public class NewsAdapterListing extends ArrayAdapter<News> {
         TextView titleView = listItemView.findViewById(R.id.articleTitleTextView);
         titleView.setText(currentNews.getTitle());
 
-        TextView authorView = listItemView.findViewById(R.id.articleAuthorTextView);
-        authorView.setText(currentNews.getAuthor());
+        TextView authorView = listItemView.findViewById(R.id.articleSourceTextView);
+        authorView.setText(currentNews.getSource());
 
         ImageView newsImage = listItemView.findViewById(R.id.articleImageView);
         newsImage.setImageBitmap(currentNews.getNewsImage());

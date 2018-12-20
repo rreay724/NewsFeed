@@ -32,7 +32,7 @@ public class NewsAdapter extends ArrayAdapter<News>{
         titleView.setText(currentNews.getTitle());
 
         TextView authorView = listItemView.findViewById(R.id.sourceTextView);
-        authorView.setText(currentNews.getAuthor());
+        authorView.setText(currentNews.getSource());
 
         ImageView newsImage = listItemView.findViewById(R.id.newsImage);
         newsImage.setImageBitmap(currentNews.getNewsImage());

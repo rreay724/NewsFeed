@@ -51,7 +51,6 @@ public class JsonQueryUtils {
         }
 
         List<News> news = new ArrayList<>();
-        String articleDescription;
 
         try {
             JSONObject jsonNewsObject = new JSONObject(newsJSON);
@@ -66,8 +65,10 @@ public class JsonQueryUtils {
 
                 String title = currentNews.getString("title");
                 String sourceName = source.getString("name");
+                String content = currentNews.getString("content");
 
                 news.add(new News(newsImage, title, sourceName));
+
             }
         } catch (JSONException e) {
             e.printStackTrace();

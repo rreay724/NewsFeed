@@ -4,13 +4,19 @@ import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +30,7 @@ public class TopHeadlinesFragment extends Fragment
 
     private static final int NEWS_LOADER_ID = 1;
     private NewsAdapter mNewsAdapter;
+    private NewsAdapterListing mNewsAdapterListing;
 
 
     public TopHeadlinesFragment(){
@@ -42,8 +49,20 @@ public class TopHeadlinesFragment extends Fragment
 
         listView.setAdapter(mNewsAdapter);
 
-        LoaderManager loaderManager = getLoaderManager();
+        final LoaderManager loaderManager = getLoaderManager();
         loaderManager.initLoader(NEWS_LOADER_ID, null, this);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mNewsAdapterListing = new NewsAdapterListing(getActivity(), new ArrayList<News>());
+                News currentNews = mNewsAdapterListing.getItem(position);
+                Intent newsArticleDisplayIntent = new Intent(getActivity(), FullArticleListing.class);
+
+                startActivity(newsArticleDisplayIntent);
+
+            }
+        });
 
         return rootView;
     }
