@@ -1,5 +1,7 @@
 package com.example.android.newsfeed;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -52,26 +54,63 @@ public class JsonQueryUtils {
         String articleDescription;
 
         try {
-            JSONObject jsonNewsObject = new JSONObject((newsJSON));
+            JSONObject jsonNewsObject = new JSONObject(newsJSON);
             JSONArray newsArray = jsonNewsObject.getJSONArray("articles");
 
             for (int i = 0; i < newsArray.length(); i++) {
                 JSONObject currentNews = newsArray.getJSONObject(i);
-//                String id = currentNews.getString("id");
-                JSONObject articles = currentNews.getJSONObject("articles");
-                JSONObject source = currentNews.getJSONObject("source");
+                JSONObject source = currentNews.optJSONObject("source");
 
-                String title = articles.getString("title");
+                String imageUrl = currentNews.getString("urlToImage");
+                Bitmap newsImage = makeHttpRequest(imageUrl);
+
+                String title = currentNews.getString("title");
                 String sourceName = source.getString("name");
 
-                news.add(new News(title, sourceName));
+                news.add(new News(newsImage, title, sourceName));
             }
         } catch (JSONException e) {
             e.printStackTrace();
             Log.e(LOG_TAG, "problem with parsing", e);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        return news;
+    }
+
+    /**
+     * Make an HTTP request to the given imageURL and return a Bitmap as the response.
+     */
+    private static Bitmap makeHttpRequest (String imageUrl) throws IOException {
+        Bitmap newsImage = null;
+        if (imageUrl == null){
+            return newsImage;
         }
 
-        return news;
+        URL url = createUrl(imageUrl);
+        HttpURLConnection urlConnection = null;
+        InputStream inputStream = null;
+        try {
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("GET");
+            urlConnection.setDoInput(true);
+            urlConnection.connect();
+            if (urlConnection.getResponseCode() == 200) {
+                inputStream = urlConnection.getInputStream();
+                newsImage = BitmapFactory.decodeStream(inputStream);
+            }
+
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "Error reading bitmap input stream");
+        } finally {
+            if (urlConnection != null) {
+                urlConnection.disconnect();
+            }
+            if (inputStream != null) {
+                inputStream.close();
+            }
+        }
+        return newsImage;
     }
 
 

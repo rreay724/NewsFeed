@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
 
 public class News {
 
-//    private String mId;
     private String mTitle;
     private String mAuthor;
     private Bitmap mNewsImage;
@@ -16,23 +15,18 @@ public class News {
     private String mSource;
 
     public News (String title, String author, Bitmap newsImage, String newsArticle){
-//        mId = id;
         mTitle = title;
         mAuthor = author;
         mNewsImage = newsImage;
         mNewsArticle = newsArticle;
     }
 
-    public News (String title, String source){
-//        mId = id;
+    public News (Bitmap newsImage, String title, String source){
+        mNewsImage = newsImage;
         mTitle = title;
         mSource = source;
-//        mNewsImage = newsImage;
     }
 
-//    public String getId() {
-//        return mId;
-//    }
 
     public String getTitle() {
         return mTitle;
